@@ -1,4 +1,4 @@
-vk.com
 userapi.com
 vk-cdn.net
+vk.com
 vkuservideo.net

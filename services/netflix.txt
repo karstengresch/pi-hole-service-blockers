@@ -1,4 +1,4 @@
 netflix.com
-nflxvideo.net
-nflxso.net
 nflxext.com
+nflxso.net
+nflxvideo.net

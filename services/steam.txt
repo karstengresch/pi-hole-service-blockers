@@ -1,6 +1,6 @@
 steam.com
-steampowered.com
+steamcdn-a.akamaihd.net
 steamcommunity.com
+steampowered.com
 steamstatic.com
 steamstore-a.akamaihd.net
-steamcdn-a.akamaihd.net
