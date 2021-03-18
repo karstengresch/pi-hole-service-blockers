@@ -63,7 +63,7 @@ blockService() {
       echo "command would be: "
       echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
       # Todo exception handling
-      # pihole $parameter1 $wildcarddomain $commentParam
+      pihole $parameter1 $wildcarddomain $commentParam
 
     done <"${serviceFile}"
 }
