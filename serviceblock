@@ -1,7 +1,7 @@
 # 
 readonly version=0.0.1
 # For domain comment
-comment="serviceblock\:"
+comment="serviceblock"
 
 blockFunc() {
   allArguments=( "$@" )
