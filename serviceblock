@@ -9,42 +9,28 @@ blockFunc() {
   parameter1=${1}
   parameter2=${2}
   if [ "${parameter2}" != "--a" ]; then
-    echo "Individual services!"
 
     for (( i=1; i<${argumentCount}; i++ ));
     do
       currentService=${allArguments[$i]}
-      echo "Current service: $currentService"
+      # echo "Current service: $currentService"
       blockService $parameter1 $currentService
     done
 
 
     elif [ "${parameter2}" = "--a" ]; then
-      echo "All services!"
-      # Todo foreach
-       for file in ./services/*; do
-        currentFile=${file:11:50}
-        currentService=${currentFile%.txt}
-        blockService $parameter1 $currentService
-  done
-    else
-      echo "Unkown services"
-      # Todo for all array +1
+      echo "Going to process *all* services!"
+        for file in ./services/*; do
+          currentFile=${file:11:50}
+          currentService=${currentFile%.txt}
+          blockService $parameter1 $currentService
+        done
   fi
 
   for (( i=0; i<${argumentCount}; i++ ));
   do
     echo "Argument $i : ${allArguments[$i]}"
   done
-  # if not --a then for recurring arguments
-
-  if [ "$parameter1" = "-b" ]; then
-      echo "Wildcard blacklisting"
-    elif [ "$parameter1" = "-u" ]; then
-      echo "Wildcard whitelisting"
-    else 
-      echo "Dunno"
-  fi
 }
 
 blockService() {
@@ -60,9 +46,9 @@ blockService() {
     do
       wildcarddomain=$line
       echo "Domain: $wildcarddomain"
-      echo "command would be: "
-      echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
-      # Todo exception handling
+      # echo "command would be: "
+      # echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
+      # Todo exception handling etc.
       pihole $parameter1 $wildcarddomain $commentParam
 
     done <"${serviceFile}"
