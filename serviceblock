@@ -1,0 +1,142 @@
+# 
+readonly version=0.0.1
+# For domain comment
+comment="serviceblock:"
+
+blockFunc() {
+  allArguments=( "$@" )
+  argumentCount=${#allArguments[@]}
+  parameter1=${1}
+  parameter2=${2}
+  if [ "${parameter2}" != "--a" ]; then
+    echo "Individual services!"
+
+    for (( i=1; i<${argumentCount}; i++ ));
+    do
+      currentService=${allArguments[$i]}
+      echo "Current service: $currentService"
+      blockService $parameter1 $currentService
+    done
+
+
+    elif [ "${parameter2}" = "--a" ]; then
+      echo "All services!"
+      # Todo foreach
+       for file in ./services/*; do
+        currentFile=${file:11:50}
+        currentService=${currentFile%.txt}
+        blockService $parameter1 $currentService
+  done
+    else
+      echo "Unkown services"
+      # Todo for all array +1
+  fi
+
+  for (( i=0; i<${argumentCount}; i++ ));
+  do
+    echo "Argument $i : ${allArguments[$i]}"
+  done
+  # if not --a then for recurring arguments
+
+  if [ "$parameter1" = "-b" ]; then
+      echo "Wildcard blacklisting"
+    elif [ "$parameter1" = "-u" ]; then
+      echo "Wildcard whitelisting"
+    else 
+      echo "Dunno"
+  fi
+}
+
+blockService() {
+  parameter1=${1} # block/unblock
+  parameter2=${2} # service (always 1!)
+  serviceFile="./services/"$parameter2".txt"
+  commentParam="--comment \""$comment" "$parameter2"\""
+
+    echo "Reading $serviceFile"
+
+    # Todo open file, iterate and (un)block domains
+    while IFS= read line
+    do
+      wildcarddomain=$line
+      echo "Domain: $wildcarddomain"
+      echo "command would be: "
+      echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
+      # Todo exception handling
+      # pihole $parameter1 $wildcarddomain $commentParam
+
+    done <"${serviceFile}"
+}
+
+listFunc() {
+  # iterate through
+  echo "Services for (un)blocking:\n"
+  for file in ./services/*; do
+        currentFile=${file:11:50}
+        echo ${currentFile%.txt} 
+  done
+  echo "\nFor (un)blocking, you need root privileges (sudo/root shell)!"
+
+  exit 0
+}
+
+versionFunc() {
+  echo "serviceblock version: $version"
+  exit 0
+}
+
+
+helpFunc() {
+  echo "Usage: serviceblock [options]
+Example: 'serviceblock -b youtube amazon'
+=>Blocks youtube and amazon as defined in the according services/[servicename].txt file by wildcard blackisting.
+N.B. - full blocking not necessarily guaranteed.
+
+Example: 'serviceblock -u youtube amazon'
+=>Unlocks youtube and amazon as defined in the according services/[servicename].txt file by wildcard blackisting.
+N.B. - unblocking not necessarily guaranteed due to adlists etc.
+
+
+Block/Unblock Options:
+  -b, block       Wildcard-blacklist servicec(s).
+  -u, unblock     Wildcard-whitelist service(s).
+  -l, list        List available services to block/unblock.
+  
+Options:
+  --a, all        Blocks/unblocks *all* services defined.
+  -v, version     Shows current script version.
+  ";
+  exit 0
+}
+
+if [[ $# = 0 ]]; then
+  helpFunc
+fi
+
+case "${1}" in
+  "-h" | "help" | "--help"      ) helpFunc;;
+  "-v" | "version" | "--version"      ) versionFunc;;
+  "-l" | "list" | "--list"      ) listFunc;;
+esac
+
+# Must be root to use this tool
+if [[ ! $EUID -eq 0 ]];then
+  if [[ -x "$(command -v sudo)" ]]; then
+    exec sudo bash "$0" "$@"
+    exit $?
+  else
+    echo -e "  ${CROSS} sudo is needed to run the command.  Please run this script as root or install sudo."
+    exit 1
+  fi
+fi
+
+# Handle redirecting to specific functions based on arguments
+# Todo individual comment (?)
+case "${1}" in
+  "-b"  | "whitelist"            ) blockFunc "$@";;
+  "-u"  | "blacklist"            ) blockFunc "$@";;
+  "--a" | "all-services"         ) blockFunc "$@";;
+  "-l"  | "list"                 ) listFunc "$@";;  
+  "-v"  | "version"              ) versionFunc "$@";;
+  *                              ) helpFunc;;
+esac
