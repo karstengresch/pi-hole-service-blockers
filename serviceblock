@@ -51,7 +51,7 @@ blockService() {
   parameter1=${1} # block/unblock
   parameter2=${2} # service (always 1!)
   serviceFile="./services/"$parameter2".txt"
-  commentParam="--comment \""$comment":"$parameter2"\""
+  commentParam="--comment \""$comment"_"$parameter2"\""
 
     echo "Reading $serviceFile"
 
