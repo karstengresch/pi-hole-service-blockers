@@ -10,7 +10,7 @@ With Pi-hole's [group filter functionality](https://docs.pi-hole.net/database/gr
 
 To do so, we need to add
 
-  1. a wildcard domain for the service in question;
+  1. (a) wildcard domain(s) for the service in question;
   2. link the wildcard domain to a group;
   3. link a client to this group.
 
