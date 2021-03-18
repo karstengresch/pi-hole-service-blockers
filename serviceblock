@@ -31,8 +31,10 @@ blockFunc() {
 blockService() {
   parameter1=${1} # block/unblock
 
-  if [ "${parameter1}" = "-u" ]; then
-    parameter1="-w"
+  if [ "${parameter1}" = "-b" ]; then
+    parameter1="--wild"
+  elif [ "${parameter1}" = "-u" ]; then
+    parameter1="--white-wild"
   fi
 
   parameter2=${2} # service (always 1!)
@@ -45,7 +47,7 @@ blockService() {
   while IFS= read line
   do
     wildcarddomain=$line
-    echo "Domain: $wildcarddomain"
+    echo "servicehole processing Domain: $wildcarddomain"
     # echo "command would be: "
     # echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
     # Todo exception handling etc.
