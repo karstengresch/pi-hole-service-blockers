@@ -43,8 +43,8 @@ git clone https://github.com/karstengresch/pi-hole-service-blockers.git
 
 ### Postwork
   1. Head over to the admin UI.
-  2. Create a group for each service to block, e.g. block-tiktok.
-  3. (Tedious!) Link all created regex domains with matching comment (e.g. "serviceblock:tiktok") to the created group and remove the default group, if desired (my setup).
+  2. Create a group for each service to block, e.g. *block-tiktok*.
+  3. (Tedious!) Link all created regex domains with matching comment (e.g. *serviceblock:tiktok*) to the created group and remove the default group, if desired (my setup).
   4. Link client to the group.
 
 ## TO DO
