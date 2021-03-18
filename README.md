@@ -14,12 +14,60 @@ To do so, we need to add
   2. link the wildcard domain to a group;
   3. link a client to this group.
 
-Unfortunately, at the moment (2021-03-16) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names (###).
+Unfortunately (I), at the moment (2021-03-16) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names, but neither regex nor wildcard domains (which get automatically converted to wildcard).
 
 Thus, you need to run a script (TBD) for adding the the wildcard domains and add them to your desired group.
+Unfortunately (II), I couldn't find built-in ways for CLI
+  * to create groups from the command-line
+  * to map groups with (regex) domains with groups.
 
-Issues/pull requests welcome.
+Therefor this quite tedious work needs to be made manually. The auto-generated comments can help you a bit.
 
-## List-URLs
+## TO DO
 
+  * remove domains for all or for specific services
+  * create group for each service
+  * link this service-group to created regex domain
+  * command to link services to client
+  * better documentation
+  * UI
+  * time based blocking/unblocking
 
+*Issues/pull requests welcome.*
+
+## Services that can be blocked
+  * 9gag
+  * amazon
+  * cloudflare
+  * dailymotion
+  * dazn
+  * discord
+  * disneyplus
+  * ebay
+  * epicgames
+  * facebook
+  * hulu
+  * imgur
+  * instagram
+  * mail(.ru)
+  * netflix
+  * ok
+  * origin
+  * pinterest
+  * qq
+  * reddit
+  * snapchat
+  * spotify
+  * steam
+  * telegram
+  * tiktok
+  * tinder
+  * twitch
+  * twitter
+  * viber
+  * vimeo
+  * vk
+  * wechat
+  * weibo
+  * whatsapp
+  * youtube
