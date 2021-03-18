@@ -16,12 +16,36 @@ To do so, we need to add
 
 Unfortunately (I), at the moment (2021-03-16) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names, but neither regex nor wildcard domains (which get automatically converted to wildcard).
 
-Thus, you need to run a script (TBD) for adding the the wildcard domains and add them to your desired group.
+Thus, you need to run a script, serviceblock, for adding the the wildcard domains and add them to your desired group.
+
 Unfortunately (II), I couldn't find built-in ways for CLI
   * to create groups from the command-line
   * to map groups with (regex) domains with groups.
 
 Therefor this quite tedious work needs to be made manually. The auto-generated comments can help you a bit.
+
+## Workflow
+Prerequisites: pi-hole (tested with 5.2.4) with web-admin UI up and running. Remote shell access to RPi.
+
+### Install and execute
+
+```
+local-computer>ssh pi@pi-hole-IP
+rpi>sudo su -
+git clone https://github.com/karstengresch/pi-hole-service-blockers.git
+# Should list all services to block:
+./serviceblock -l
+# be cautious - creates some domains: 
+# ./serviceblock -b --a
+# Example: blocking tiktok only.
+./serviceblock -b tiktok
+```
+
+### Postwork
+  1. Head over to the admin UI.
+  2. Create a group for each service to block, e.g. block-tiktok.
+  3. (Tedious!) Link all created regex domains with matching comment (e.g. "serviceblock: tiktok") to the created group and remove the default group, if desired (my setup).
+  4. Link client to the group.
 
 ## TO DO
 
@@ -29,6 +53,7 @@ Therefor this quite tedious work needs to be made manually. The auto-generated c
   * create group for each service
   * link this service-group to created regex domain
   * command to link services to client
+  * create a "block-<service>" list for all services for copy and paste group creation
   * better documentation
   * UI
   * time based blocking/unblocking
