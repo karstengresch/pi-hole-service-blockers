@@ -1,5 +1,6 @@
 # pi-hole-service-blockers
 Service definitions for easy Pi-hole group blocking.
+
 Inspired by [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)'s ["blocked services"](https://github.com/AdguardTeam/AdGuardHome/blob/master/internal/dnsfilter/blocked.go).
 
 
