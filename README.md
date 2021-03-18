@@ -96,3 +96,7 @@ git clone https://github.com/karstengresch/pi-hole-service-blockers.git
   * weibo
   * whatsapp
   * youtube
+
+## FUD
+  * *Kids will easily circumvent this.*<br>At least not my kids at the moment, at least not for all equipment (they do can pass the entire local network, but that's another story).<br><br>
+  * *"I have setup (A|B|C)" that doesn't allow recognizing clients.*<br>OK, then this approach will **not** work.
