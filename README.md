@@ -14,7 +14,7 @@ To do so, we need to add
   2. link the wildcard domain to a group;
   3. link a client to this group.
 
-Unfortunately (I), at the moment (2021-03-16) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names, but neither regex nor wildcard domains (which get automatically converted to wildcard).
+Unfortunately (I), at the moment (2021-03-19) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names, but neither regex nor wildcard domains (which get automatically converted to wildcard).
 
 Thus, you need to run a script, serviceblock, for adding the the wildcard domains and add them to your desired group.
 
