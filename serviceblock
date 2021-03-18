@@ -26,32 +26,32 @@ blockFunc() {
           blockService $parameter1 $currentService
         done
   fi
-
-  for (( i=0; i<${argumentCount}; i++ ));
-  do
-    echo "Argument $i : ${allArguments[$i]}"
-  done
 }
 
 blockService() {
   parameter1=${1} # block/unblock
+
+  if [ "${parameter1}" = "-u" ]; then
+    parameter1="-w"
+  fi
+
   parameter2=${2} # service (always 1!)
   serviceFile="./services/"$parameter2".txt"
   commentParam="--comment $comment":"$parameter2"
 
-    echo "Reading $serviceFile"
+  echo "Reading $serviceFile"
 
-    # Todo open file, iterate and (un)block domains
-    while IFS= read line
-    do
-      wildcarddomain=$line
-      echo "Domain: $wildcarddomain"
-      # echo "command would be: "
-      # echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
-      # Todo exception handling etc.
-      pihole $parameter1 $wildcarddomain $commentParam
+  # Todo open file, iterate and (un)block domains
+  while IFS= read line
+  do
+    wildcarddomain=$line
+    echo "Domain: $wildcarddomain"
+    # echo "command would be: "
+    # echo "pihole"" "$parameter1" "$wildcarddomain" "$commentParam
+    # Todo exception handling etc.
+    pihole $parameter1 $wildcarddomain $commentParam
 
-    done <"${serviceFile}"
+  done <"${serviceFile}"
 }
 
 listFunc() {
