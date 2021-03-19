@@ -104,6 +104,6 @@ git clone https://github.com/karstengresch/pi-hole-service-blockers.git
   * *"I have setup (A|B|C)" that doesn't allow recognizing clients.*<br>OK, then this approach will **not** work.
 
 ## Disclaimer
-This project isn't affiliated with the official [Pi-hole](https://pi-hole.net). 
+This project isn't affiliated with the official [Pi-hole project](https://pi-hole.net). 
 
 No warranties, use at your own risk.
