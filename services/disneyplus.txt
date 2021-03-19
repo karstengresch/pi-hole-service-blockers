@@ -1,2 +1,7 @@
+bamgrid.com
+dilcdn.com
+disney.de
+disney.io
 disney-plus.net
 disneyplus.com
+search-api-disney.svcs.dssott.com

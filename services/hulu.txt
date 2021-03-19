@@ -1,1 +1,3 @@
 hulu.com
+polyfill.io
+hulu-matchmaker.s3.us-west-2.amazonaws.com
