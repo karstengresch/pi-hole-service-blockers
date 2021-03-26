@@ -16,7 +16,7 @@ To do so, we need to add
   2. link the wildcard domain(s) to a group;
   3. link a client to this group.
 
-Unfortunately (I), at the moment (2021-03-19) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names, but neither regex nor wildcard domains (which get automatically converted to regex domains).
+Unfortunately (I), at the moment (2021-03-19) there's no way to add wildcard domains by lists: The handy "adlist" feature only supports exact matched domain names, but neither regex nor wildcard domains (which get automatically converted to wildcard).
 
 Thus, you need to run a script, serviceblock, for adding the the wildcard domains and add them to your desired group.
 
@@ -44,7 +44,7 @@ git clone https://github.com/karstengresch/pi-hole-service-blockers.git
 ```
 
 ### Postwork
-  1. Head over to the admin UI.
+  1. Head over to the admin UI->*Group Management*.
   2. Create a group for each service to block, e.g. *block-tiktok*.
   3. (Tedious!) Link all created regex domains with matching comment (e.g. *serviceblock:tiktok*) to the created group and remove the default group, if desired (my setup).
   4. Link client to the group.
@@ -73,6 +73,7 @@ git clone https://github.com/karstengresch/pi-hole-service-blockers.git
   * ebay
   * epicgames
   * facebook
+  * gutefrage
   * hulu
   * imgur
   * instagram
