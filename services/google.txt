@@ -1,0 +1,6 @@
+google.de
+google.com
+google.co.uk
+google.it
+google.fr
+gstatic.com
