@@ -2,6 +2,7 @@ steam-chat.com
 steam.com
 steamcdn-a.akamaihd.net
 steamcommunity.com
+steamcontent.com
 steampowered.com
 steamstatic.com
 steamstore-a.akamaihd.net
